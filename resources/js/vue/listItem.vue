@@ -38,6 +38,7 @@ export default {
 }
 
 </script>
+
 <style scoped>
 .completed {
     color: #999999;
@@ -56,9 +57,9 @@ export default {
 }
 
 .delete {
+	font-family: 'GellixBlack', Arial, sans-serif;
     color: #ff4589;
     cursor: pointer;
-    font-weight: bold;
     outline: none;
 }
 </style>
