@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TodoItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/items', [TodoItemController::class, 'index']);
+
+Route::prefix('/item')->group( function () {
+	Route::post('/store', [TodoItemController::class, 'store']);
+	Route::put('/{id}', [TodoItemController::class, 'update']);
+	Route::delete('/{id}', [TodoItemController::class, 'destroy']);
 });
