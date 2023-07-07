@@ -26,4 +26,7 @@ Feature & Unit tests have been added to the Tests folder.
 I spent a couple of days on/off building this with most of that time refreshing my Vue.js knowledge, familiarising myself with Vite & axios & some of the Laravel 10 features.
 The most challenging aspect was working with Vue, whilst fun to use, I'm a little rusty!
 Nice to have's would have been the option to add 'Due by' functionality with email reminders & calendar integration, I would also secure the Todo list with a login page. 
+
+I did attempt to use font-awesome as I wanted a trash can icon for deleting todo's & also a square-plus icon instead of the 'Add' button but had issues importing the correct library & didn't want to waste anymore time.
+
 To increase the performance, I would minify all assets. As there's not really much to this app, performance issues aren't expected.
