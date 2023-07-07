@@ -29,11 +29,15 @@ class TodoItemController extends Controller
      */
     public function store(Request $request)
     {
+        $cleanName = $request->validate([
+            'item.name' => 'required|string|max:255',
+        ]);
+
         $todoItem = new TodoItem;
-        $todoItem->name = $request->item['name'];
+        $todoItem->name = $cleanName['item']['name'];
         $todoItem->save();
 
-        return $todoItem;
+    return $todoItem;
     }
 
     /**
@@ -75,9 +79,13 @@ class TodoItemController extends Controller
      */
     public function destroy(string $id)
     {
-        $findItem = TodoItem::find( $id );
+        $cleanID = \Validator::validate(['id' => $id], [
+            'id' => 'required|integer'
+        ]);
 
-        if( $findItem ){
+        $findItem = TodoItem::find($cleanID['id']);
+
+        if ($findItem) {
             $findItem->delete();
 
             return "Todo item successfully deleted.";
@@ -85,4 +93,5 @@ class TodoItemController extends Controller
 
         return "Todo item not found.";
     }
+
 }

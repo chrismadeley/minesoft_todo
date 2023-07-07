@@ -2,8 +2,7 @@
     <div class="item">
         <input type="checkbox" @change="updateCheckbox()" v-model="item.completed" :checked="item.completed" />
         <span :class="[item.completed ? 'completed' : '', 'itemText']">{{ item.name }}</span>
-        <button @click="removeItem()" class="delete" title="Delete Todo">X
-        </button>
+        <button @click="removeItem()" class="delete" title="Delete Todo">X</button>
     </div>
 </template>
 <script>
@@ -57,9 +56,9 @@ export default {
 }
 
 .delete {
-	font-family: 'GellixBlack', Arial, sans-serif;
     color: #ff4589;
     cursor: pointer;
+	font-family: 'GellixBlack', Arial, sans-serif;
     outline: none;
 }
 </style>
