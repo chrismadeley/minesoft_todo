@@ -1,47 +1,86 @@
 <template>
-	<div class="addTodoItem">
-		<input type="text" v-model="item.name" />
-		<button
-			@click="addTodoItem()" 
-			:class="[ item.name ? 'active' : 'inactive', 'addButton']">
-			Add
-		</button>
-	</div>
-
-
+  <div class="addTodoItem">
+    <input type="text" v-model="item.name" placeholder="Item Name" />
+    <div>
+      <select v-model="selectedTodoListId" class="todoListSelect">
+        <option value="" disabled>Select Todo List</option>
+        <option v-for="todoList in todoLists" :value="todoList.id" :key="todoList.id">
+          {{ todoList.name }}
+        </option>
+      </select>
+      <button @click="createTodoList()" :disabled="todoListName === ''">Create List</button>
+    </div>
+    <button
+      @click="addTodoItem()"
+      :class="[item.name && selectedTodoListId ? 'active' : 'inactive', 'addButton']"
+      :disabled="selectedTodoListId === null"
+    >
+      Add
+    </button>
+  </div>
 </template>
 
 <script>
-	export default {
-		data: function () {
-			return {
-				item: {
-					name: ""
-				}
-			}
-		},
-		methods: {
-			addTodoItem() {
-				if( this.item.name == '') {
-					return;
-				}
+export default {
+  data() {
+    return {
+      item: {
+        name: ''
+      },
+      todoListName: '',
+      selectedTodoListId: null
+    };
+  },
+  props: ['todoLists'],
+  methods: {
+    addTodoItem() {
+      if (this.item.name === '' || this.selectedTodoListId === null) {
+        return;
+      }
 
-				axios.post('api/item/store', {
-					item: this.item
-				})
-				.then( response => {
-					if( response.status == 201 ) {
-						this.item.name = '';
-						this.$emit('reloadList');
-					}
-				})
-				.catch( error => {
-					console.log (error);
-				})
-			}
-		}
-	}
+      axios
+        .post('api/item/store', {
+          item: {
+            name: this.item.name,
+            todo_list_id: this.selectedTodoListId
+          }
+        })
+        .then((response) => {
+          if (response.status === 201) {
+            this.item.name = '';
+            this.selectedTodoListId = null;
+            this.$emit('reloadList');
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    createTodoList() {
+      if (this.todoListName === '') {
+        return;
+      }
+
+      axios
+        .post('api/todo_list/store', {
+          name: this.todoListName
+        })
+        .then((response) => {
+          if (response.status === 201) {
+            this.todoListName = '';
+            this.selectedTodoListId = response.data.id;
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
+};
 </script>
+
+
+
 
 <style scoped>
 
