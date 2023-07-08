@@ -1,8 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+body {
+    font-family: 'Gellix', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+}
 
-body{
-	font-family: 'Roboto Slab', serif;
-	margin: 0;
-	padding: 0;
-	font-size: 1em;
+@font-face {
+    font-family: 'Gellix';
+    src: local('Gellix Regular'), local('Gellix-Regular'),
+        url('../fonts/Gellix-Regular.woff2') format('woff2'),
+        url('../fonts/Gellix-Regular.woff') format('woff'),
+        url('../fonts/Gellix-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GellixBlack';
+    src: local('Gellix Black'), local('Gellix-Black'),
+        url('../fonts/Gellix-Black.woff2') format('woff2'),
+        url('../fonts/Gellix-Black.woff') format('woff'),
+        url('../fonts/Gellix-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
 }

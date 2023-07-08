@@ -38,12 +38,12 @@ export default {
 }
 
 </script>
+
 <style scoped>
+	
 .todoContainer {
-    font-family: 'Roboto Slab', serif;
     margin: auto;
     width: 50%;
-
 }
 
 .todoHeading {

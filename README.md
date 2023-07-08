@@ -1,66 +1,32 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+##   Minesoft dev test
+**Introduction:**
+This MVP is intended to demonstrate how I would build a Todo app using Laravel 10.14.1 & Vue.js 3.2.36
 
-## About Laravel
+**Installation:**
+I've used an AWS database so you'll need to add your own database details in the .env file.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+CD into the root directory *minesoft_todo* and run `composer install`, followed by `npm install`.
+After configuring your database and creating the `minesoft-todo` schema, run `php artisan migrate` to create the required tables.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+To start the webserver, run `php artisan server`.
+The app will now be available at *http://127.0.0.1:8000/*
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+I've made use of the new Laravel Vite for asset bundling. 
+To make code updates, simply run `npm run dev` where Vite will watch for updates & reload the browser when needed.
 
-## Learning Laravel
+### The app
+I started work on this 2 days after reading the brief & regrettably missed out a required feature - the ability to create a new Todo list & edit it's name. This is currently being  addressed & work has started on a new branch called `feature/create_new_list` for now, I thought it best to show what's been done so far.
+As it stands, the app is a single Todo list with the ability to add new 'todo items', mark them as completed via the checkbox & delete them via the delete button.
+The app is built using Vue.js components along with axios for requests.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Feature & Unit tests have been added to the Tests folder.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Further info
+I spent a couple of days on/off building this with most of that time refreshing my Vue.js knowledge, familiarising myself with Vite & axios & some of the Laravel 10 features.
+The most challenging aspect was working with Vue, whilst fun to use, I'm a little rusty!
+Nice to have's would have been the option to add 'Due by' functionality with email reminders & calendar integration, I would also secure the Todo list with a login page. 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+I did attempt to use font-awesome as I wanted a trash can icon for deleting todo's & also a square-plus icon instead of the 'Add' button but had issues importing the correct library & didn't want to waste anymore time.
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+To increase the performance, I would minify all assets. As there's not really much to this app, performance issues aren't expected.
