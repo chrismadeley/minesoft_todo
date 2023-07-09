@@ -16,8 +16,7 @@ I've made use of the new Laravel Vite for asset bundling.
 To make code updates, simply run `npm run dev` where Vite will watch for updates & reload the browser when needed.
 
 ### The app
-I started work on this 2 days after reading the brief & regrettably missed out a required feature - the ability to create a new Todo list & edit it's name. This is currently being  addressed & work has started on a new branch called `feature/create_new_list` for now, I thought it best to show what's been done so far.
-As it stands, the app is a single Todo list with the ability to add new 'todo items', mark them as completed via the checkbox & delete them via the delete button.
+This is a sinlge page application that allows a user to create a new todo list, add & delete todo items as well as marking them completed using the checkbox, update the todo list name and delete an entire todo list.
 The app is built using Vue.js components along with axios for requests.
 
 Feature & Unit tests have been added to the Tests folder.

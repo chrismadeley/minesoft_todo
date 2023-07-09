@@ -5,6 +5,10 @@ body {
     font-size: 1em;
 }
 
+input, button {
+    font-family: 'Gellix', Arial, sans-serif;
+}
+
 @font-face {
     font-family: 'Gellix';
     src: local('Gellix Regular'), local('Gellix-Regular'),

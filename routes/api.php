@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoItemController;
+use App\Http\Controllers\TodoListController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +28,11 @@ Route::prefix('/item')->group( function () {
 	Route::put('/{id}', [TodoItemController::class, 'update']);
 	Route::delete('/{id}', [TodoItemController::class, 'destroy']);
 });
+
+Route::post('/todo_list/store', [TodoListController::class, 'store'])->name('todo_list.store');
+
+Route::get('/todo_list', [TodoListController::class, 'index']);
+Route::delete('/todo_list/{id}', [TodoListController::class, 'destroy']);
+Route::put('/todo_list/{id}', [TodoListController::class, 'update']);
+
+
