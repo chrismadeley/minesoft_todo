@@ -31,20 +31,16 @@ class TodoItemController extends Controller
     {
         $cleanData = $request->validate([
             'item.name' => 'required|string|max:255',
-            'item.todo_list_name' => 'required|string|max:255',
+            'item.todo_list_id' => 'required|integer'
         ]);
-
-        // Find or create the TodoList based on the name
-        $todoList = TodoList::firstOrCreate(['name' => $cleanData['item']['todo_list_name']]);
 
         $todoItem = new TodoItem;
         $todoItem->name = $cleanData['item']['name'];
-        $todoItem->todo_list_id = $todoList->id;
+        $todoItem->todo_list_id = $cleanData['item']['todo_list_id'];
         $todoItem->save();
 
         return $todoItem;
-    }
-
+}
 
     /**
      * Display the specified resource.

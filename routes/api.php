@@ -32,4 +32,7 @@ Route::prefix('/item')->group( function () {
 Route::post('/todo_list/store', [TodoListController::class, 'store'])->name('todo_list.store');
 
 Route::get('/todo_list', [TodoListController::class, 'index']);
+Route::delete('/todo_list/{id}', [TodoListController::class, 'destroy']);
+Route::put('/todo_list/{id}', [TodoListController::class, 'update']);
+
 

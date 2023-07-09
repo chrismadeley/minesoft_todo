@@ -13,7 +13,7 @@ class TodoListController extends Controller
      */
     public function index()
     {
-        $todoLists = TodoList::all();
+        $todoLists = TodoList::orderBy('created_at', 'DESC')->get();
 
         return response()->json($todoLists, 200);
     }
@@ -47,16 +47,26 @@ class TodoListController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $todoList = TodoList::findOrFail($id);
+        $todoList->name = $request->input('name');
+        $todoList->save();
+
+        return response()->json($todoList, 200);
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $todoList = TodoList::findOrFail($id);
+
+        // Delete the todo list and its associated items
+        $todoList->delete();
+
+        return response()->json(null, 200);
     }
 }

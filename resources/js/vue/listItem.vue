@@ -6,6 +6,7 @@
     </div>
 </template>
 <script>
+
 export default {
     props: ['item'],
     methods: {
@@ -56,9 +57,13 @@ export default {
 }
 
 .delete {
-    color: #ff4589;
+    background-color: #dc3545;
+    border-radius: 0.25rem;
+    border: none;
+    color: white;
     cursor: pointer;
-	font-family: 'GellixBlack', Arial, sans-serif;
+    font-family: 'GellixBlack', Arial, sans-serif;
     outline: none;
 }
+
 </style>
